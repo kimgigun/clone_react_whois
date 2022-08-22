@@ -1,12 +1,11 @@
-import { SearchOutlined } from "@ant-design/icons/lib/icons";
-import { AutoComplete, Col, Input, Row, Space, Typography } from "antd";
 import React from "react";
+import { AutoComplete, Input, Space, Typography } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../state";
 
 export default function SearchInput() {
   const keyword = useSelector((state) => state.search.keyword);
-  console.log("keyword", keyword);
   const dispatch = useDispatch();
   function setKeyword(value) {
     if (value !== keyword) {
@@ -14,17 +13,18 @@ export default function SearchInput() {
       dispatch(actions.fetchAutoComplete(value));
     }
   }
-  let autoCompletes = useSelector((state) => {
-    return state.search.autoCompletes;
-  });
+
+  const autoCompletes = useSelector((state) => state.search.autoCompletes);
+  console.log(autoCompletes);
   function gotoUser(value) {}
+
   return (
     <>
       <AutoComplete
-        style={{ width: 200 }}
+        value={keyword}
         onChange={setKeyword}
         onSelect={gotoUser}
-        value={keyword}
+        style={{ width: "100%" }}
         options={autoCompletes.map((item) => ({
           value: item.name,
           label: (
@@ -39,7 +39,11 @@ export default function SearchInput() {
         }))}
         autoFocus
       >
-        <Input size="large" placeholder="input" prefix={<SearchOutlined />} />
+        <Input
+          size="large"
+          placeholder="input here"
+          prefix={<SearchOutlined />}
+        />
       </AutoComplete>
     </>
   );

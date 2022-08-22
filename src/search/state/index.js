@@ -5,8 +5,8 @@ import {
 } from "../../common/redux-helper";
 
 export const Types = {
-  SetValue: "common/SetValue",
-  FetchAutoComplete: "common/FetchAutoStatus",
+  SetValue: "search/SetValue",
+  FetchAutoComplete: "search/FetchAutoComplete",
 };
 
 export const actions = {
@@ -22,8 +22,7 @@ const INITIAL_STATE = {
   autoCompletes: [],
 };
 
-const searchReducer = createReducer(INITIAL_STATE, {
+const reducer = createReducer(INITIAL_STATE, {
   [Types.SetValue]: setValueReducer,
 });
-
-export default searchReducer;
+export default reducer;

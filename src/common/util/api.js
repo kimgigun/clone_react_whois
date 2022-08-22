@@ -11,7 +11,7 @@ import { message } from "antd";
  * @param {object=} param.data
  * @param {object=} param.totalCount
  */
-export function callApi({ method = "get", url, params, data }) {
+ export function callApi({ method = "get", url, params, data }) {
   debugger;
   return axios({
     url,
@@ -22,7 +22,6 @@ export function callApi({ method = "get", url, params, data }) {
     withCredentials: true,
   }).then((response) => {
     const { resultCode, resultMessage, totalCount } = response.data;
-    debugger;
     if (resultCode < 0) {
       message.error(resultMessage);
     }

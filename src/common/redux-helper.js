@@ -9,15 +9,14 @@ export function createReducer(initialState, handlerMap) {
         handler(draft, action);
       });
     } else {
+      return state;
     }
-    return state;
   };
 }
 
 export function createSetValueAction(type) {
   return (key, value) => ({ type, key, value });
 }
-
 export function setValueReducer(state, action) {
   state[action.key] = action.value;
 }
