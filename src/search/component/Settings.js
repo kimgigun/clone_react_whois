@@ -8,9 +8,6 @@ export default function Settings(logout) {
       overlay={
         <Menu>
           <Menu.Item onClick={logout}>로그아웃</Menu.Item>
-          {/* <Menu.SubMenu title="sub menu">
-            <Menu.Item>item 3</Menu.Item>
-          </Menu.SubMenu> */}
         </Menu>
       }
       placement="bottomRight"

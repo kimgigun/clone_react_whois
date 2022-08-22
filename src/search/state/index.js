@@ -2,7 +2,7 @@ import {
   createReducer,
   createSetValueAction,
   setValueReducer,
-} from "../common/redux-helper";
+} from "../../common/redux-helper";
 
 export const Types = {
   SetValue: "common/SetValue",
@@ -11,14 +11,19 @@ export const Types = {
 
 export const actions = {
   setValue: createSetValueAction(Types.SetValue),
+  fetchAutoComplete: (keyword) => ({
+    type: Types.FetchAutoComplete,
+    keyword,
+  }),
 };
-//abc
+
 const INITIAL_STATE = {
   keyword: "",
   autoCompletes: [],
 };
 
-const reducer = createReducer(INITIAL_STATE, {
+const searchReducer = createReducer(INITIAL_STATE, {
   [Types.SetValue]: setValueReducer,
 });
-export default reducer;
+
+export default searchReducer;

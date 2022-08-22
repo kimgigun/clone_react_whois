@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_HOST } from "../common/constant";
+import { API_HOST } from "../constant";
 import { message } from "antd";
 
 /**
@@ -12,6 +12,7 @@ import { message } from "antd";
  * @param {object=} param.totalCount
  */
 export function callApi({ method = "get", url, params, data }) {
+  debugger;
   return axios({
     url,
     method,
@@ -21,6 +22,7 @@ export function callApi({ method = "get", url, params, data }) {
     withCredentials: true,
   }).then((response) => {
     const { resultCode, resultMessage, totalCount } = response.data;
+    debugger;
     if (resultCode < 0) {
       message.error(resultMessage);
     }
